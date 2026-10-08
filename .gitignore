@@ -1,0 +1,15 @@
+node_modules/
+__pycache__/
+*.pyc
+out/
+.venv/
+# audio and renders stay local: songs belong to their owners
+*.mp3
+*.wav
+*.m4a
+*.flac
+*.mp4
+*.mov
+# superseded first project (media-heavy)
+examples/jimmy-teaser/
+!video-studio/assets/sfx/**/*.wav

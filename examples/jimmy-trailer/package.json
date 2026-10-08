@@ -1,0 +1,23 @@
+{
+  "name": "video",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "studio": "remotion studio src/index.js",
+    "render": "remotion render src/index.js Film out/film.mp4",
+    "render:tall": "remotion render src/index.js FilmTall out/film-tall.mp4",
+    "render:square": "remotion render src/index.js FilmSquare out/film-square.mp4",
+    "render:portrait": "remotion render src/index.js FilmPortrait out/film-portrait.mp4",
+    "stills": "node tools/stills.mjs"
+  },
+  "dependencies": {
+    "@remotion/bundler": "4.0.529",
+    "@remotion/cli": "4.0.529",
+    "@remotion/google-fonts": "4.0.529",
+    "@remotion/renderer": "4.0.529",
+    "lucide-react": "^1.52.0",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "remotion": "4.0.529"
+  }
+}
