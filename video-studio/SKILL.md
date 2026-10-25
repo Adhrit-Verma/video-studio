@@ -1,6 +1,6 @@
 ---
 name: video-studio
-description: Make videos in code with Remotion (React) in any style and tone - launch videos and short "brag" clips, teasers, promos and ads, feature explainers, demos, changelogs, pitch videos, brand films, animated infographics, and social clips for Reels, TikTok, Shorts, YouTube and LinkedIn. Analyzes the subject (codebase, repo, live website, docs), asks for purpose, focus, style, camera, tone and sound (or decides in quick mode), then builds 3D UI and infographic scenes with measured beat-sync or voiceover timing, CC0 sound effects and a finished mix, and delivers 16:9, 9:16, 1:1 and 4:5 exports with a poster frame and share caption. Use whenever the user wants any video, animation or motion graphic about an app, product, project, website, feature, company, event or idea, says "brag about this" or "make a launch video", wants a video synced to a song or voiceover, or wants a video re-cut, restyled, re-timed or made vertical - even if they never mention Remotion.
+description: Make videos in code with Remotion (React) in any style, tone and mood - launch videos and short "brag" clips, teasers, promos and ads, feature explainers, demos, changelogs, pitch videos, brand films, animated infographics, social clips for Reels, TikTok, Shorts, YouTube and LinkedIn, and personal films cut from the user's own photos and clips (birthday, anniversary, love and apology films, couple and friendship edits, memory montages, photo dumps, lyric edits, velocity edits and other trend formats). Analyzes the subject (codebase, repo, live website, docs, or footage plus the story behind it), asks for purpose, focus, style or mood, camera, tone and sound (or decides in quick mode), then builds scenes with measured beat-sync or voiceover timing, CC0 sound effects and a finished mix, and delivers 16:9, 9:16, 1:1 and 4:5 exports with a poster frame and share caption. Use whenever the user wants any video, animation, motion graphic or edit about an app, product, project, website, feature, company, event, idea or person, says "brag about this", "make a launch video" or "make a video for my girlfriend/friend/mom", wants a video synced to a song or voiceover, or wants a video re-cut, restyled, re-timed or made vertical - even if they never mention Remotion.
 ---
 
 # Video studio
@@ -9,7 +9,9 @@ Make the video the user asks for, not a house style. This skill is a process and
 toolkit: **understand the subject → ask what the user wants → lock the look with style
 frames → storyboard → build with the kit → finish the sound → review stills → render →
 verify → deliver.** The catalogues in `references/` are vocabulary to offer the user,
-not a template to copy.
+not a template to copy. **Personal films** (gifts, love, apologies, birthdays, friends) follow
+the same flow, but discovery is a story interview and a footage log, and the look comes from
+the recipient's taste and a mood, not a product brand (`references/personal-films.md`).
 
 ## Principles (general, earned the hard way)
 - **The user chooses style, camera, tone, focus and feel.** Offer concrete options with a
@@ -28,9 +30,19 @@ not a template to copy.
 - **Camera smooth, elements on the beat.** The camera (pans, pushes, tracking) is always one
   continuous eased move: never kick-punched, stepped or shaken. The music drives element
   entrances (snapped to measured kicks) and scene transitions only. → `references/camera.md`
-- **Camera smooth, elements on the beat.** The camera (pans, pushes, tracking) is always one
-  continuous eased move: never kick-punched, stepped or shaken. The music drives element
-  entrances (snapped to measured kicks) and scene transitions only. → `references/camera.md`
+- **Emotion first, effects last.** A cut serves the feeling before the beat (Murch: emotion
+  51%, rhythm 10%). Every effect must answer "what feeling does this add?". Energy devices
+  (glitch, flash frames, whips, a cut on every beat) never go in tender or sincere moments.
+  → `references/editing.md`, `references/moods.md`
+- **The mood fits the purpose.** Cute, romantic, sincere, nostalgic, hype… each sets pace,
+  motion, type, grade and sound. If a request fights the purpose ("high energy" on an
+  apology), say so and propose a fit; don't just comply. An apology cut like a hype reel was
+  dismissed by its recipient as "faltu" (rubbish).
+- **Personal films are about two people.** The recipient's taste (reels they love) sets the
+  look; the sender's own words and specific memories are the message. Never ship a message
+  film made only of someone else's lyrics or generic lines. → `references/personal-films.md`
+- **Footage is chosen by eye.** `clip_moments.py` shortlists, a shot log decides, and every
+  shot has a reason. Never assign clips by rotating through them on the beat grid.
 - **Timing is on a grid.** Entrances start on beats/8ths (or voiceover words), never
   on arbitrary fractions; with music, the grid is *measured*, the biggest moments sit on
   the strongest cues, and sync is verified on the rendered file.
@@ -52,6 +64,14 @@ product brief (pitch, audience, flow worth showing, ranked features, proof point
 tokens, assets, suggested tone, draft caption, gaps).
 → `references/discovery.md`
 
+**Personal footage** (photos and clips of people, a song that means something): run the
+story interview first (`personal-films.md` §1): the one feeling, the recipient's taste and
+reference reels, 3-6 specific memories, inside jokes, the sender's own words, boundaries.
+Then `python <skill>/scripts/clip_moments.py <media folder> --out out/moments`, **look at the
+contact sheets**, and write a shot log (`brief/shots.md`) with the money moments marked.
+Don't build a message film without the memories and the sender's words.
+→ `references/personal-films.md`, `references/editing.md`
+
 ### 2. Brief: ask the user (or quick mode)
 Two short rounds with options (use the structured question tool if available; up to 4
 questions each, recommended option first):
@@ -65,7 +85,12 @@ questions each, recommended option first):
 the rubric and state the choices in one message. If the user gives references ("like
 X"), extract the traits and confirm them. Write the agreed creative brief to
 `brief/brief.md`.
-→ `references/brief.md`, `references/styles.md`, `references/camera.md`, `references/tones.md`
+**Personal films:** Round 1 is the story interview; Round 2 picks the **mood** (or a mood
+arc, e.g. cute → romantic → sincere), format, length (30-90 s lands best) and sound. For a
+trend format, check what's current and extract traits from the recipient's reference
+reels rather than a fixed list.
+→ `references/brief.md`, `references/styles.md`, `references/camera.md`, `references/tones.md`,
+`references/moods.md`, `references/trends.md`
 
 ### 3. Scaffold
 ```bash
@@ -107,7 +132,11 @@ camera move · sound (cue lock, effects). The hook first; the flow as the center
 reveals on the strongest cues, drops or key words; pauses on gaps; the end card on the
 calm part. A different technique per scene. Spell out what arrives one by one and what
 interaction is simulated, and check every line's reading time against its hold.
-→ `references/techniques.md`
+Footage films: each row names its shot-log ids, the mood of the section, and why the cut
+falls where it does (on the action, the look, the completed smile, the beat). Shot
+lengths vary with the emotion; the money moments get the strongest musical cues and the
+longest holds.
+→ `references/techniques.md`, `references/editing.md`
 
 ### 7. Build
 Scenes in `src/Video.jsx` using `src/kit.jsx` (all visuals read `theme.js`). Reuse the
@@ -131,6 +160,11 @@ muddy crossfades, anything off-brief. Then the checklist:
 - effects are present, sparse and soft (unless the brief says otherwise); something
   breathes with the music when it fits the tone;
 - the length matches the brief; the caption is drafted.
+Personal films, also the **recipient test** (`editing.md` §11):
+- a smile in the first 3 s, and something only the sender would know;
+- every frame flattering, with no blur, legs-only or mid-blink shots;
+- the mood holds per section, and no effect looks like a template;
+- the message is in the sender's words.
 Fix, re-sheet the changed scenes.
 
 ### 9. Render, verify, finish
@@ -174,6 +208,11 @@ install. → `references/blender.md`, `scripts/blender_product_shot.py`
   `--frames=a-b` scene renders and `--scale=0.5` drafts; render full-res once at the end.
 - `CameraMotionBlur` renders its subtree once per sample (6 samples = 6× the cost of
   that scene): keep it to short, fast moves.
+- Remotion can't remap time inside a clip: build speed ramps and smooth slow motion as new
+  clip files with `scripts/speed_ramp.py`, then place them like any clip.
+- Long footage films: render in `--frames` chunks with `--muted`, concat, and mux the song
+  once (`ffmpeg -f concat … -i song -c:v copy -c:a aac`). Per-chunk audio leaves AAC gaps at
+  the joins. Re-render only the chunks a fix touches.
 
 ## Files
 - `assets/template/`: Remotion project (`video.json`, `src/theme.js`, `src/kit.jsx`,
@@ -182,8 +221,11 @@ install. → `references/blender.md`, `scripts/blender_product_shot.py`
 - `assets/sfx/`: CC0 sound effects (impact, interface, ui, casino, keyboard) with
   `sfx-analysis.md/json` (brightness, high-frequency risk, suggested uses).
 - `scripts/`: `discover.py`, `analyze_music.py`, `edit_song.py`, `arrange_music.py`, `gen_beat.py`, `master_audio.py`,
-  `verify_sync.py`, `contact_sheet.py`, `finish.py`, `blender_product_shot.py` (usage in
-  each docstring).
+  `mix_voice.py`, `verify_sync.py`, `contact_sheet.py`, `finish.py`, `clip_moments.py` (footage
+  shortlist, duplicate photos, contact sheets), `speed_ramp.py` (velocity / slow motion),
+  `blender_product_shot.py` (usage in each docstring).
 - `references/`: `discovery.md`, `brief.md`, `styles.md`, `camera.md`, `tones.md`,
-  `techniques.md`, `sound.md`, `css-3d.md`, `formats.md`, `blender.md`,
-  `assets-and-honesty.md`.
+  `moods.md` (cute, romantic, sincere, nostalgic, hype… as concrete levers), `editing.md`
+  (cutting real footage), `personal-films.md` (gifts, love, apologies), `trends.md`
+  (social formats and how to check what's current), `techniques.md`, `sound.md`, `css-3d.md`,
+  `formats.md`, `blender.md`, `assets-and-honesty.md`.

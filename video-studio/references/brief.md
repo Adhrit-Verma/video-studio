@@ -70,6 +70,18 @@ Options may arrive as flags or plain words; treat both the same:
 10. **Honesty/privacy constraints:** real screenshots allowed? (only on invented data),
     claims that must be verifiable, anything confidential.
 
+## Personal films: a different Round 1 and Round 2
+For films about or for a person (birthday, anniversary, love, apology, friendship, memories):
+- **Round 1 = the story interview** (`personal-films.md` §1): the one feeling at the end,
+  the recipient's taste (1-3 reels they loved, what they'd find cringe), 3-6 specific memories
+  with the media that shows them, inside jokes and language mix, the sender's own words,
+  boundaries on private media, where it'll be watched.
+- **Round 2 = mood and craft:** mood or mood arc (`moods.md`), format and length (30-90 s;
+  ask before cutting their song), sound (their song, its quiet parts under the words, a
+  voice note), and optionally one trend accent (`trends.md`).
+- If the user asks for something that fights the purpose (hype energy on an apology, a
+  meme cut on a condolence), say so in one line and offer the fitting option first.
+
 ## The creative brief (confirm before building)
 ```
 Purpose / audience: ...

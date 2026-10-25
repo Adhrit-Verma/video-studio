@@ -20,6 +20,12 @@ logo, UI or trade dress.
 | **Isometric / illustrative** | explainers, infrastructure, workflows | light or dark bg, flat shapes, 3-4 colours, rx 55-60 / rz -45 stages | diagrams that build piece by piece, flows of dots, labels counter-rotated to face camera |
 | **Brutalist** | design tools, fashion, art | high contrast, raw grid, huge type, hard edges radius 0, motion `linear` | hard cuts, no easing, overlapping text blocks, visible grid lines |
 | **Product's own system** | anything with a strong brand | tokens from discovery (colours, font, radius, surface) | the video looks like the product: its real components, its tone of voice |
+| **Scrapbook / handmade** | personal gifts, memories, cute | `Paper` bg, warm ink, casual handwriting font, motion `bouncy`, `useStepFrame(3)` | polaroids, tape, doodles drawing on, cut-out stickers, page flips |
+| **Soft romantic film** | love, anniversaries, tender | `GRADES.warm`/`golden`, refined script or serif italic used sparingly, grain 0.05, motion `smooth` | slow pushes, dissolves, light leaks, close-ups, one line at a time |
+| **Pastel cute** | birthdays, friends, playful | pastel bg, rounded font, saturated accent, motion `back` | `StickerText`, doodle hearts and sparkles, freeze frames, pops |
+| **Y2K digicam** | nostalgia, friends, trips | `GRADES.digicam`, `Camcorder` overlay, mono date stamp, motion `snappy` | flash pops on cuts, date stamps, slight softness, 4:3 inner frame |
+
+Personal films pick a **mood** first (`moods.md`); these families are how a mood looks.
 
 ## Turning a choice into tokens
 - **Palette:** 1 background, 1 ink, 1 muted, 1-3 accents. Check contrast of captions on
@@ -40,3 +46,6 @@ now and expensive after 15 scenes.
   one user rejected it outright. If someone wants it, render a style frame first.
 - A single repeated scene pattern (headline, then panel, then headline...) reads as a
   slideshow in any style. Vary techniques per scene (`references/techniques.md`).
+- "Aesthetic" defaults read as templates: glowing Great Vibes script, rose-gold light leaks
+  on everything, glitch transitions. An apology film built that way was called "faltu".
+  Choose from the recipient's taste instead.

@@ -178,6 +178,8 @@ Contrast: body text ≥ 4.5:1 against what's behind it, large text ≥ 3:1 (WCAG
 it on every background a caption crosses; add a chip or scrim when it fails.
 
 ## 8. Rhythm rules
+- Cutting real footage? Emotion outranks rhythm: let the smile finish, cut on the action or
+  the look, and vary shot lengths (`editing.md`). The grid places cuts; it doesn't choose shots.
 - Entrances start on a beat or an 8th (x.0 / x.5) or on a VO word; never at arbitrary
   fractions. Fractional starts read as "not synced" even when scene cuts are on the grid.
 - Fast attack, slow settle (the chosen motion preset); the *start* of a motion is the hit.

@@ -6,6 +6,8 @@ and the share caption. Pick one preset in the brief. Freeform direction ("fake S
 launch from 2016", "museum exhibit", "overproduced mobile game ad") maps to the nearest
 preset for pacing, but keep the user's words in `brief/brief.md` and follow them for copy.
 Presets are defaults, not limits. (Adapted from latent-spaces/brag, MIT.)
+Tones are for films about things (products, projects, launches). Films for or about
+people (love, apologies, birthdays, memories) use **moods** instead: `moods.md`.
 
 | Tone | Energy | Scenes (in ~20 s) | Transitions | Motion preset | SFX density |
 |---|---|---|---|---|---|

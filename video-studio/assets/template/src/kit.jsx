@@ -282,6 +282,140 @@ export const ImageSeq = ({ dir, count, speed = 1, ext = "jpg", style }) => {
     style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", ...style }} />;
 };
 
+// --- handmade, cute and memory looks (references/moods.md, references/trends.md) -------------
+// Stop-motion time: hold each pose for n frames ("on twos/threes"), for a handmade, scrapbook feel.
+// Use it in place of useCurrentFrame: const f = useStepFrame(3).
+export const useStepFrame = (n = 2) => { const f = useCurrentFrame(); return f - (f % n); };
+
+// Colour grades by mood: a filter for the media plus a tint over it. Wrap photos and clips only:
+// a filter flattens 3D children (css-3d.md rule 1), so never wrap a Stage.
+export const GRADES = {
+  natural: { filter: "contrast(1.03) saturate(1.04)" },
+  warm: { filter: "contrast(1.05) saturate(1.08) sepia(0.12)", tint: "rgba(255,170,110,0.10)", blend: "soft-light" },
+  golden: { filter: "contrast(1.08) saturate(1.15) sepia(0.22) brightness(1.03)", tint: "rgba(255,185,90,0.14)", blend: "soft-light" },
+  pastel: { filter: "contrast(0.9) saturate(0.85) brightness(1.08)", tint: "rgba(255,205,230,0.14)", blend: "screen" },
+  faded: { filter: "contrast(0.86) saturate(0.78) sepia(0.15) brightness(1.06)", tint: "rgba(70,90,110,0.12)", blend: "lighten" },
+  night: { filter: "contrast(1.1) saturate(0.9) brightness(0.95)", tint: "rgba(40,80,170,0.12)", blend: "soft-light" },
+  mono: { filter: "grayscale(1) contrast(1.15) brightness(1.02)" },
+  digicam: { filter: "contrast(1.18) saturate(1.3) brightness(1.06) blur(0.4px)", tint: "rgba(0,255,210,0.04)", blend: "screen" },
+};
+export const Graded = ({ grade = "natural", children, style }) => {
+  const g = GRADES[grade] ?? GRADES.natural;
+  return (
+    <AbsoluteFill style={style}>
+      <AbsoluteFill style={{ filter: g.filter }}>{children}</AbsoluteFill>
+      {g.tint && <AbsoluteFill style={{ background: g.tint, mixBlendMode: g.blend, pointerEvents: "none" }} />}
+    </AbsoluteFill>
+  );
+};
+
+// Hand-drawn doodles that draw themselves, then "boil" (a tiny wobble every 4 frames, like
+// redrawn animation). `shape` is a name below or your own SVG path in a 0..100 box.
+// Positioned from the parent's centre like Layer: x, y in px. `at`/`dur` in beats.
+export const DOODLES = {
+  heart: "M50 84 C22 64 8 46 14 31 C20 16 40 15 50 33 C60 15 80 16 86 31 C92 46 79 63 47 86",
+  circle: "M70 16 C40 4 9 22 11 52 C13 82 50 95 77 81 C97 69 95 33 73 19 C61 11 45 11 34 16",
+  arrow: "M12 78 C30 66 56 48 84 22 M66 19 L85 20 L81 39",
+  sparkle: "M50 8 C53 37 62 47 92 50 C62 53 53 63 50 92 C47 63 38 53 8 50 C38 47 47 37 50 8 Z",
+  star: "M50 8 L61 38 L93 39 L67 58 L77 89 L50 70 L23 89 L33 58 L7 39 L39 38 Z",
+  underline: "M6 62 C30 52 62 58 94 47",
+  squiggle: "M4 50 C14 28 24 72 34 50 C44 28 54 72 64 50 C74 28 84 72 96 50",
+};
+export const Doodle = ({ shape = "heart", at = 0, dur = 0.6, size = 160, color = "#fff", width = 5, x = 0, y = 0, rot = 0, fill, boil = true, style }) => {
+  const b = useBeat();
+  const f = useStepFrame(4);
+  const p = rise(b, at, dur, Easing.inOut(Easing.quad));
+  if (p <= 0) return null;
+  const j = (k) => (boil ? (random(`${shape}${k}${f}`) - 0.5) : 0);
+  return (
+    <svg width={size} height={size} viewBox="0 0 100 100"
+      style={{ position: "absolute", left: "50%", top: "50%", overflow: "visible",
+        transform: `translate(${x - size / 2 + j("x") * 2}px, ${y - size / 2 + j("y") * 2}px) rotate(${rot + j("r") * 3}deg)`, ...style }}>
+      <path d={DOODLES[shape] ?? shape} fill={fill ?? "none"} fillOpacity={fill ? rise(b, at + dur * 0.8, 0.3) : 0}
+        stroke={color} strokeWidth={width} strokeLinecap="round" strokeLinejoin="round" vectorEffect="non-scaling-stroke"
+        pathLength={1} strokeDasharray={1} strokeDashoffset={1 - p} />
+    </svg>
+  );
+};
+
+// Sticker text: chunky, outlined, slightly tilted, pops in with an overshoot.
+export const StickerText = ({ children, at = 0, size = 64, color = "#ff4f8b", outline = "#fff", rot = -4, font = fontFamily, style }) => {
+  const p = rise(useBeat(), at, 0.5, EASES.back);
+  const o = Math.max(2, size * 0.09);
+  const ring = Array.from({ length: 12 }, (_, i) => {
+    const a = (i / 12) * Math.PI * 2;
+    return `${(Math.cos(a) * o).toFixed(1)}px ${(Math.sin(a) * o).toFixed(1)}px 0 ${outline}`;
+  }).join(", ");
+  return (
+    <div style={{ display: "inline-block", fontFamily: font, fontWeight: 800, fontSize: size, lineHeight: 1.05, color,
+      textShadow: `${ring}, 0 ${o * 1.6}px ${o * 2}px rgba(0,0,0,0.35)`, opacity: Math.min(1, p * 3),
+      transform: `rotate(${rot}deg) scale(${p})`, ...style }}>{children}</div>
+  );
+};
+
+// A polaroid: photo or clip inside (children), optional handwritten caption, drops in at `at`.
+export const Polaroid = ({ w = 420, ratio = 1, rot = -3, at = 0, caption, captionFont = fontFamily, captionColor = "#333", children, style }) => {
+  const p = rise(useBeat(), at, 0.8, EASES.back);
+  const pad = w * 0.06, img = w - pad * 2;
+  return (
+    <div style={{ position: "relative", width: w, padding: `${pad}px ${pad}px ${pad * 3.6}px`, background: "#f7f3ea",
+      boxShadow: "0 24px 50px rgba(0,0,0,0.45), 0 3px 8px rgba(0,0,0,0.25)", opacity: Math.min(1, p * 3),
+      transform: `translateY(${(1 - p) * -80}px) rotate(${rot + (1 - p) * 8}deg) scale(${1.2 - 0.2 * p})`, ...style }}>
+      <div style={{ position: "relative", width: img, height: img / ratio, overflow: "hidden", background: "#222" }}>{children}</div>
+      {caption && <div style={{ position: "absolute", left: 0, right: 0, bottom: pad * 0.9, textAlign: "center", fontFamily: captionFont,
+        fontSize: w * 0.075, color: captionColor }}>{caption}</div>}
+    </div>
+  );
+};
+
+// Paper background (fibres + a soft edge burn) for scrapbook and handmade films.
+export const Paper = ({ color = "#f3ead8", grain = 0.5 }) => (
+  <AbsoluteFill style={{ background: color }}>
+    <svg width="100%" height="100%" style={{ position: "absolute", inset: 0, opacity: grain, mixBlendMode: "multiply" }}>
+      <filter id="paper-fibres"><feTurbulence type="fractalNoise" baseFrequency="0.035 0.9" numOctaves="3" seed="7" />
+        <feColorMatrix values="0 0 0 0 0.55  0 0 0 0 0.5  0 0 0 0 0.42  0 0 0 0.35 0" /></filter>
+      <rect width="100%" height="100%" filter="url(#paper-fibres)" />
+    </svg>
+    <AbsoluteFill style={{ background: "radial-gradient(ellipse at 50% 45%, transparent 55%, rgba(80,50,20,0.18))" }} />
+  </AbsoluteFill>
+);
+
+// A strip of tape with torn ends; x, y from the parent's centre.
+const torn = (() => {
+  const l = [], r = [];
+  for (let i = 0; i <= 8; i++) { l.push(`${i % 2 ? 4 : 0}% ${i * 12.5}%`); r.unshift(`${i % 2 ? 96 : 100}% ${i * 12.5}%`); }
+  return `polygon(${[...l, ...r].join(", ")})`;
+})();
+export const TapeStrip = ({ w = 160, h = 44, x = 0, y = 0, rot = -8, color = "rgba(255,240,180,0.72)" }) => (
+  <div style={{ position: "absolute", left: "50%", top: "50%", width: w, height: h, clipPath: torn,
+    background: `linear-gradient(180deg, rgba(255,255,255,0.25), transparent 40%), ${color}`,
+    transform: `translate(${x - w / 2}px, ${y - h / 2}px) rotate(${rot}deg)` }} />
+);
+
+// Camcorder / digicam overlay: corner brackets, blinking REC, running time, orange date stamp.
+export const Camcorder = ({ date = "OCT 25 2026", rec = true, color = "#ffb030", font = "'Courier New', monospace" }) => {
+  const f = useCurrentFrame();
+  const { fps, width, height } = useVideoConfig();
+  const s = Math.min(width, height) / 1080, m = 50 * s, L = 70 * s, t = Math.max(2, 4 * s);
+  const sec = Math.floor(f / fps);
+  const tc = [Math.floor(sec / 3600), Math.floor(sec / 60) % 60, sec % 60].map((n) => String(n).padStart(2, "0")).join(":");
+  const label = { position: "absolute", fontFamily: font, fontWeight: 700, fontSize: 42 * s, color: "#fff", letterSpacing: "0.08em", textShadow: "0 0 4px rgba(0,0,0,0.6)" };
+  const corner = (pos) => <div style={{ position: "absolute", width: L, height: L, borderColor: "rgba(255,255,255,0.85)", borderStyle: "solid", borderWidth: 0, ...pos }} />;
+  return (
+    <AbsoluteFill style={{ pointerEvents: "none" }}>
+      {corner({ left: m, top: m, borderLeftWidth: t, borderTopWidth: t })}
+      {corner({ right: m, top: m, borderRightWidth: t, borderTopWidth: t })}
+      {corner({ left: m, bottom: m, borderLeftWidth: t, borderBottomWidth: t })}
+      {corner({ right: m, bottom: m, borderRightWidth: t, borderBottomWidth: t })}
+      {rec && <div style={{ ...label, left: m + L * 0.4, top: m + L * 0.45 }}>
+        <span style={{ color: "#ff3b30", opacity: f % fps < fps * 0.6 ? 1 : 0 }}>●</span> REC</div>}
+      <div style={{ ...label, right: m + L * 0.4, top: m + L * 0.45 }}>▮▮▮▯</div>
+      <div style={{ ...label, left: m + L * 0.4, bottom: m + L * 0.45 }}>▶ {tc}</div>
+      <div style={{ ...label, right: m + L * 0.4, bottom: m + L * 0.45, color, textShadow: `0 0 8px ${color}99` }}>{date}</div>
+    </AbsoluteFill>
+  );
+};
+
 // --- layout check: warns in the render/stills log, so layout bugs can't slip past --------
 // For visible text >= 18px: "[layout] frame N: \"…\" runs off the frame (right 34px)".
 // For headlines >= 40px: "[layout] frame N: \"…\" leaves \"you?\" alone on its last line".

@@ -174,7 +174,8 @@ Blender only for the optional photoreal product shots.
 ```
 video-studio/                 the skill
 ├── SKILL.md                  the workflow Claude follows (discover → brief → … → deliver)
-├── references/               styles, camera language, tones, techniques, sound, formats, honesty
+├── references/               styles, camera, tones, moods, editing footage, personal films, trends,
+│                             techniques, sound, formats, honesty
 ├── scripts/
 │   ├── discover.py           read a repo or site into a product brief
 │   ├── analyze_music.py      measure tempo + phase from the kicks (any pattern)
@@ -182,6 +183,8 @@ video-studio/                 the skill
 │   ├── gen_beat.py           an original beat when there's no song
 │   ├── master_audio.py       master, energy/bass envelopes, strongest cues
 │   ├── contact_sheet.py      stills → a labelled sheet + layout warnings
+│   ├── clip_moments.py       shortlist usable moments in clips/photos, flag duplicates, contact sheets
+│   ├── speed_ramp.py         velocity edits and smooth slow motion as new clips
 │   ├── verify_sync.py        measure sync on the rendered file
 │   └── finish.py             final loudness, poster, poster as frame 0
 └── assets/
