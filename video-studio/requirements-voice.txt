@@ -1,0 +1,7 @@
+# Optional: voice notes, captions, lyric edits (transcribe.py, align.py, retime_captions.py).
+# Needs Python 3.10-3.12 (torch has no wheels for newer Pythons yet). ~2-3 GB with models.
+# GPU (NVIDIA): install torch/torchaudio from https://pytorch.org first for CUDA, then this file.
+-r requirements.txt
+faster-whisper>=1.0
+torch>=2.1
+torchaudio>=2.1

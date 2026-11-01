@@ -340,7 +340,7 @@ export const Doodle = ({ shape = "heart", at = 0, dur = 0.6, size = 160, color =
 
 // Sticker text: chunky, outlined, slightly tilted, pops in with an overshoot.
 export const StickerText = ({ children, at = 0, size = 64, color = "#ff4f8b", outline = "#fff", rot = -4, font = fontFamily, style }) => {
-  const p = rise(useBeat(), at, 0.5, EASES.back);
+  const p = rise(useBeat(), at, 0.5, EASES.bouncy);   // overshoot without a wind-up: visible from frame one
   const o = Math.max(2, size * 0.09);
   const ring = Array.from({ length: 12 }, (_, i) => {
     const a = (i / 12) * Math.PI * 2;
@@ -354,8 +354,8 @@ export const StickerText = ({ children, at = 0, size = 64, color = "#ff4f8b", ou
 };
 
 // A polaroid: photo or clip inside (children), optional handwritten caption, drops in at `at`.
-export const Polaroid = ({ w = 420, ratio = 1, rot = -3, at = 0, caption, captionFont = fontFamily, captionColor = "#333", children, style }) => {
-  const p = rise(useBeat(), at, 0.8, EASES.back);
+export const Polaroid = ({ w = 420, ratio = 1, rot = -3, at = 0, caption, captionFont = fontFamily, captionColor = "#333", captionSize, children, style }) => {
+  const p = rise(useBeat(), at, 0.8, EASES.bouncy);
   const pad = w * 0.06, img = w - pad * 2;
   return (
     <div style={{ position: "relative", width: w, padding: `${pad}px ${pad}px ${pad * 3.6}px`, background: "#f7f3ea",
@@ -363,7 +363,7 @@ export const Polaroid = ({ w = 420, ratio = 1, rot = -3, at = 0, caption, captio
       transform: `translateY(${(1 - p) * -80}px) rotate(${rot + (1 - p) * 8}deg) scale(${1.2 - 0.2 * p})`, ...style }}>
       <div style={{ position: "relative", width: img, height: img / ratio, overflow: "hidden", background: "#222" }}>{children}</div>
       {caption && <div style={{ position: "absolute", left: 0, right: 0, bottom: pad * 0.9, textAlign: "center", fontFamily: captionFont,
-        fontSize: w * 0.075, color: captionColor }}>{caption}</div>}
+        fontSize: captionSize ?? w * 0.075, color: captionColor, lineHeight: 1 }}>{caption}</div>}
     </div>
   );
 };

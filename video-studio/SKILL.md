@@ -99,7 +99,9 @@ cp -r <skill>/assets/template <where-the-user-wants>/video && cd <that>/video &&
 Set `src/theme.js` from the chosen style + brand (font, colours, surface, headline,
 motion preset from the tone, grain). Timing lives in `video.json` (with music: its BPM;
 voiceover or none: `bpm: 60` so units are seconds). Needs Node 18+, ffmpeg, Python with
-numpy and Pillow. Keep the folder out of the product's git unless asked.
+numpy and Pillow: on a new machine run `python <skill>/scripts/doctor.py` first (it lists
+what's missing and how to fix it; the repo's INSTALL.md and `install/` do the setup).
+Keep the folder out of the product's git unless asked.
 
 ### 4. Style frames
 Build 2-3 representative moments (a type scene, a UI scene, the end card) with the
@@ -223,7 +225,14 @@ install. → `references/blender.md`, `scripts/blender_product_shot.py`
 - `scripts/`: `discover.py`, `analyze_music.py`, `edit_song.py`, `arrange_music.py`, `gen_beat.py`, `master_audio.py`,
   `mix_voice.py`, `verify_sync.py`, `contact_sheet.py`, `finish.py`, `clip_moments.py` (footage
   shortlist, duplicate photos, contact sheets), `speed_ramp.py` (velocity / slow motion),
-  `blender_product_shot.py` (usage in each docstring).
+  `blender_product_shot.py`, `doctor.py` (what this machine has / lacks).
+  Voice and lyrics (Python 3.10-3.12 + `requirements-voice.txt`): `transcribe.py`
+  (faster-whisper word timestamps), `align.py` (forced-align known lyrics to a vocal, far
+  tighter than Whisper on singing), `onsets.py` (vocal syllable starts), `specview.py`
+  (spectrogram + word marks to check sync by eye), `master_voice.py` / `edit_voice.py`
+  (clean, level and tighten a voice note; writes a timemap), `build_captions.py` /
+  `retime_captions.py` (captions through that timemap / snapped to the real speech).
+  Usage in each docstring.
 - `references/`: `discovery.md`, `brief.md`, `styles.md`, `camera.md`, `tones.md`,
   `moods.md` (cute, romantic, sincere, nostalgic, hype… as concrete levers), `editing.md`
   (cutting real footage), `personal-films.md` (gifts, love, apologies), `trends.md`

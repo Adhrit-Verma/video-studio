@@ -10,6 +10,7 @@ out/
 *.flac
 *.mp4
 *.mov
-# superseded first project (media-heavy)
-examples/jimmy-teaser/
+# examples: only the public demo; personal projects live outside the repo
+examples/*
+!examples/jimmy-trailer/
 !video-studio/assets/sfx/**/*.wav

@@ -31,7 +31,7 @@ products; CSS-3D for everything that is UI, type or diagram.
 | `Graded grade` / `GRADES` | mood colour grades for photos and clips: natural, warm, golden, pastel, faded, night, mono, digicam (a filter flattens 3D: never wrap a Stage) |
 | `Doodle shape at dur size color width x y rot fill boil` / `DOODLES` | hand-drawn heart, circle, arrow, sparkle, star, underline, squiggle (or your own path) that draws itself, then boils |
 | `StickerText at size color outline rot font` | chunky outlined sticker text that pops in |
-| `Polaroid w ratio rot at caption` | a photo or clip (children) in a polaroid that drops in, with an optional handwritten caption |
+| `Polaroid w ratio rot at caption captionFont captionColor captionSize` | a photo or clip (children) in a polaroid that drops in (photo area = 0.88 × w), with an optional handwritten caption |
 | `Paper`, `TapeStrip w h x y rot` | scrapbook paper background and torn tape |
 | `Camcorder date rec color font` | camcorder/digicam overlay: brackets, blinking REC, running time, orange date stamp |
 | `useStepFrame(n)` | the current frame held for n frames (stop-motion "on twos/threes") |

@@ -12,6 +12,21 @@ format trends run 3-4 weeks before saturating (New Engen, Oct 2026). So:
 Common platform advice for 2026: a strong hook in the first 2 s; cuts every 2-5 s for
 general reels (faster for hype, slower for tender); cut to the music's structure.
 
+## When the user sends a template reel ("make it like this")
+They want **that template, filled**, not a reinterpretation. A redrawn version of a pink
+lyric template was rejected as "very bad … very less effort"; the filled template landed.
+1. **Measure it:** frame sheets every 0.25 s, cut times (frame differences), the picture
+   area. Many templates are a 4:3 or 16:9 band inside a black 9:16 frame, with a caption in
+   the top bar.
+2. **Reuse its own animated sections untouched** (crop the band from the clean template,
+   upscale with lanczos plus a light unsharp mask, and play it with `trimBefore` at the
+   measured frames). The template's animated text stays exactly as its creator made it.
+3. **Rebuild only the photo slots in its design language:** same background, frame style,
+   label type, camera move and doodles. Make it richer (more photos, depth, parallax) but
+   recognisably the same.
+4. **Only the most beautiful photos** of the person: sharp, well lit, flattering, no
+   friends cropped in, no casual or unflattering frames.
+
 ## Evergreen formats and how to build them
 | Format | What it is | Build it with |
 |---|---|---|
@@ -21,7 +36,7 @@ general reels (faster for hype, slower for tender); cut to the music's structure
 | **Velocity edit** | speed ramps synced to the beat: fast, slow on the hit, fast | `scripts/speed_ramp.py`, then place the slow point on the beat; motion-rich clips only |
 | **Y2K digicam / camcorder** | orange date stamp, REC dot, harsh flash, contrasty saturated colour, slight softness | `Camcorder` overlay, `GRADES.digicam`, white flash pops on cuts |
 | **Vlog timestamps** | time-of-day labels on each clip, no voiceover ("7:42 am · chai") | small mono label per shot, held 0.8 s+ |
-| **Lyric edit** | one sung line at a time, handwritten or karaoke-highlighted, synced to the vocal | user supplies the lyrics; forced alignment (`examples/align.py`); traced glyphs |
+| **Lyric edit** | one sung line at a time, handwritten or karaoke-highlighted, synced to the vocal | user supplies the lyrics; forced alignment (`scripts/align.py`); traced glyphs |
 | **Text-message / note storytelling** | a conversation or note appears line by line with typing dots | a generic chat or notes card (never copy an app's exact UI); `Stream` with key ticks |
 | **Crumpled-paper message** | a wadded paper unfolds to reveal a handwritten line | paper texture + scale/rotate unfold + the sender's handwriting PNG |
 | **"More to me" montage** | an opening statement, then quick photo montages of each interest | statement card → per-interest bursts → calm sign-off |

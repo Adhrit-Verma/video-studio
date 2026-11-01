@@ -145,24 +145,30 @@ Every render is checked against numbers, not vibes:
 
 ## 📦 Install
 
-**Claude Code** (any OS): put the `video-studio` folder in your skills directory.
+**Claude Code**: clone, run the installer, start a new session.
 
 ```bash
 git clone https://github.com/Adhrit-Verma/video-studio.git
-cp -r video-studio/video-studio ~/.claude/skills/video-studio
+cd video-studio
+bash install/install.sh                                         # macOS / Linux
+powershell -ExecutionPolicy Bypass -File install\install.ps1    # Windows
 ```
 
-On Windows (PowerShell), link it so `git pull` updates the skill:
+Add `--voice` / `-Voice` for voice-note and lyric tools, `--blender` / `-Blender` for photoreal
+product shots, or `--all` / `-All` to also install missing Node, ffmpeg and Python.
+Or just tell Claude Code on the new machine: *"install the video-studio skill from
+github.com/Adhrit-Verma/video-studio"*; **[INSTALL.md](INSTALL.md)** walks it through every step.
 
-```powershell
-New-Item -ItemType Junction -Path "$env:USERPROFILE\.claude\skills\video-studio" -Target "$PWD\video-studio\video-studio"
-```
+| Part | Needs |
+|---|---|
+| Core | Node 18+ · ffmpeg · Python 3.10+ with numpy, Pillow |
+| Voice / lyrics *(optional)* | Python 3.10–3.12 · faster-whisper · torch + torchaudio |
+| Product shots *(optional)* | Blender 4.2+ |
+
+Check any machine with `python video-studio/scripts/doctor.py`.
 
 **claude.ai / Claude desktop:** download [`dist/video-studio.skill`](dist/video-studio.skill) and add it under
 **Settings → Capabilities → Skills**.
-
-**The machine that renders needs:** Node 18+, ffmpeg on `PATH`, Python 3 with `numpy` and `Pillow`.
-Blender only for the optional photoreal product shots.
 
 > **Laptop-friendly by design.** Iterate with stills and half-scale drafts; render full-res once,
 > at Remotion's default concurrency.
@@ -186,10 +192,17 @@ video-studio/                 the skill
 │   ├── clip_moments.py       shortlist usable moments in clips/photos, flag duplicates, contact sheets
 │   ├── speed_ramp.py         velocity edits and smooth slow motion as new clips
 │   ├── verify_sync.py        measure sync on the rendered file
-│   └── finish.py             final loudness, poster, poster as frame 0
+│   ├── finish.py             final loudness, poster, poster as frame 0
+│   ├── transcribe.py, align.py, onsets.py, specview.py      voice + lyric timing
+│   ├── master_voice.py, edit_voice.py, *_captions.py        voice notes → captions
+│   ├── blender_product_shot.py   photoreal device shots (headless Blender)
+│   └── doctor.py             what this machine has and lacks
+├── requirements.txt          core Python packages (+ requirements-voice.txt)
 └── assets/
     ├── template/             the Remotion starter: kit.jsx, theme.js, 4 formats
     └── sfx/                  CC0 sound effects, analysed for safe reuse
+install/                      install.ps1 (Windows) · install.sh (macOS/Linux)
+INSTALL.md                    step-by-step setup, written for Claude Code to follow
 dist/video-studio.skill       the packaged skill
 examples/jimmy-trailer/       the film above, as source
 docs/                         README art (rendered with the skill's own kit)
