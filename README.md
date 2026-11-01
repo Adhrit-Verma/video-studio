@@ -17,16 +17,18 @@
 </p>
 
 <p align="center">
-  <a href="#-watch">Watch</a> ·
-  <a href="#%EF%B8%8F-not-just-launch-films">Gallery</a> ·
-  <a href="#-just-ask">Just ask</a> ·
-  <a href="#%EF%B8%8F-how-it-works">How it works</a> ·
-  <a href="#-the-quality-bar">Quality bar</a> ·
-  <a href="#-install">Install</a> ·
-  <a href="#%EF%B8%8F-whats-inside">What's inside</a>
+  <a href="#watch">Watch</a> ·
+  <a href="#gallery">Gallery</a> ·
+  <a href="#just-ask">Just ask</a> ·
+  <a href="#how-it-works">How it works</a> ·
+  <a href="#quality-bar">Quality bar</a> ·
+  <a href="#install">Install</a> ·
+  <a href="#whats-inside">What's inside</a>
 </p>
 
 ---
+
+<a name="watch"></a>
 
 ## 🎬 Watch
 
@@ -46,6 +48,8 @@
 </details>
 
 ---
+
+<a name="gallery"></a>
 
 ## 🎞️ Not just launch films
 
@@ -102,6 +106,8 @@ Same skill, same quality checks, very different films. Ask for a mood, a format 
 
 ---
 
+<a name="just-ask"></a>
+
 ## 💬 Just ask
 
 No templates to fill in. Talk to Claude Code from inside any project:
@@ -140,6 +146,8 @@ No templates to fill in. Talk to Claude Code from inside any project:
 </table>
 
 ---
+
+<a name="how-it-works"></a>
 
 ## ⚙️ How it works
 
@@ -184,6 +192,8 @@ No templates to fill in. Talk to Claude Code from inside any project:
 
 ---
 
+<a name="quality-bar"></a>
+
 ## 📏 The quality bar
 
 Every render is checked against numbers, not vibes:
@@ -198,6 +208,8 @@ Every render is checked against numbers, not vibes:
 | **Honesty** | real features, invented demo data | built into the workflow, never the user's real data |
 
 ---
+
+<a name="install"></a>
 
 ## 📦 Install
 
@@ -230,6 +242,8 @@ Check any machine with `python video-studio/scripts/doctor.py`.
 > at Remotion's default concurrency.
 
 ---
+
+<a name="whats-inside"></a>
 
 ## 🗂️ What's inside
 
