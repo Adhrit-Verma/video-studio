@@ -18,6 +18,7 @@
 
 <p align="center">
   <a href="#-watch">Watch</a> ·
+  <a href="#-not-just-launch-films">Gallery</a> ·
   <a href="#-just-ask">Just ask</a> ·
   <a href="#-how-it-works">How it works</a> ·
   <a href="#-the-quality-bar">Quality bar</a> ·
@@ -43,6 +44,61 @@
 <br>
 <p align="center"><img src="docs/scenes.jpg" alt="Nine scenes from the trailer: hook, tease, ask, proof, timeline search, reminders, timers, hands, skills grid" width="100%"></p>
 </details>
+
+---
+
+## 🎞️ Not just launch films
+
+Same skill, same quality checks, very different films. Ask for a mood, a format or a feeling and it picks the craft.
+
+<table>
+<tr>
+  <td width="40%" valign="top"><img src="docs/showreel.gif" alt="Motion design showreel: bold type, easing curves, dot grids, an orange end card" width="100%"></td>
+  <td valign="top">
+    <h3>Motion-design showreel</h3>
+    <i>"make me a 15-second motion showreel"</i><br><br>
+    Six scenes, each a different craft: squash &amp; stretch, easing curves, staggered dot
+    grids, layered depth, path animation, a type-led end card. Bold editorial type on a
+    120 BPM grid, every move landing on the beat.
+    <br><br><sub>15 s · 16:9 · Remotion</sub>
+  </td>
+</tr>
+<tr>
+  <td valign="top"><img src="docs/kafy.gif" alt="Creator trailer: KAFY IS LIVE, stat counters, game titles, Adhrit Verma aka Kafy" width="100%"></td>
+  <td valign="top">
+    <h3>Creator / channel trailer</h3>
+    <i>"a trailer for my streaming channel, type and graphics only"</i><br><br>
+    A person as a brand: live badge, game-title walls, a mock stream, counters that count
+    up, bar charts, interests as cards, then the name. Real channel facts only. Sound
+    effects locked to a 120 BPM grid, with a stem and cue times so the creator can drop in
+    their own music.
+    <br><br><sub>20 s · 16:9 + 9:16 · <a href="https://www.youtube.com/@kafydier">@kafydier</a></sub>
+  </td>
+</tr>
+<tr>
+  <td valign="top" align="center"><img src="docs/expression-360.gif" alt="Blender reel: a coloured ring rolls down a neon track into the EXPRESSION 360 logo" width="60%"></td>
+  <td valign="top">
+    <h3>3D logo reel in Blender</h3>
+    <i>"a vertical 3D reveal for our event logo"</i><br><br>
+    The whole film is one headless Blender scene: a ring rolls down a glowing track,
+    leaps, and lands as the "O" of the logo, which settles into a reflective floor. Camera
+    cuts on the storyboard panels, rendered with EEVEE.
+    <br><br><sub>12 s · 9:16 · Blender</sub>
+  </td>
+</tr>
+</table>
+
+### More formats it has made
+
+| Format | What it does |
+|---|---|
+| 🎙️ **Voice-note reels** | Turns a spoken voice note into a reel: the voice is cleaned and levelled, pauses tightened, and every word appears as it's spoken (forced-aligned), Hinglish on screen with English subtitles beneath. Scenes are illustrated (a plant that grows across the week) or built from the speaker's own clips. |
+| ✍️ **Handwritten lyric edits** | One sung line at a time, written by a glowing nib in script as it's sung. Lyrics are aligned to the separated vocal, not guessed by speech recognition, so each word lands on the syllable. |
+| 💌 **Personal gift films** | Birthdays, apologies, "I'm proud of you" films built from a short story interview, the sender's own words and the recipient's photos and clips: cuts on every beat, memory walls, split strips, a slow-motion smile, a handwritten last line. |
+| 🎬 **Commentary reels** | A spoken opinion piece with word-synced captions, chaptered, over relevant stills, ending on a single line of type. |
+| 🔁 **Template fills** | Send a reel you like as a template; it keeps that reel's timing and structure and fills it with your moments. |
+
+<sub>Personal films stay private: the gallery above shows only work its owner chose to share.</sub>
 
 ---
 
