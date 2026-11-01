@@ -18,12 +18,12 @@
 
 <p align="center">
   <a href="#-watch">Watch</a> ·
-  <a href="#-not-just-launch-films">Gallery</a> ·
+  <a href="#%EF%B8%8F-not-just-launch-films">Gallery</a> ·
   <a href="#-just-ask">Just ask</a> ·
-  <a href="#-how-it-works">How it works</a> ·
+  <a href="#%EF%B8%8F-how-it-works">How it works</a> ·
   <a href="#-the-quality-bar">Quality bar</a> ·
   <a href="#-install">Install</a> ·
-  <a href="#-whats-inside">What's inside</a>
+  <a href="#%EF%B8%8F-whats-inside">What's inside</a>
 </p>
 
 ---
